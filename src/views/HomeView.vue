@@ -9,17 +9,32 @@ import TextTitle from "@/components/TextTitle.vue";
 import GalleryImage from "@/components/GalleryImage.vue";
 import reviewsJSON from "@/JSON Customization/reviews.json"
 import Review from "@/components/Review.vue";
+import {ref} from "vue";
 
 const imgArray = carouselImages
 const imgGallery = galleryImages
-const reviews = reviewsJSON
+const reviews: Reviews = reviewsJSON;
+
+interface Review {
+  id: number;
+  username: string;
+  comment: string;
+  rating: number;
+  "profile-photo": string;
+}
+
+interface Reviews {
+  [key: string]: Review;
+}
 
 const getTotalRating = () => {
   let sum = 0
   let count = 0;
   for (let item in reviews) {
-    sum += parseFloat(reviews[item]['rating'])
-    count += 1
+    if (reviews.hasOwnProperty(item)) {
+      sum += reviews[item]['rating']
+      count += 1
+    }
   }
 
   return (sum / count).toFixed(2)
