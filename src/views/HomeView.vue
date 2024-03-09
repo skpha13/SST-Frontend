@@ -26,8 +26,8 @@ const getTotalRating = () => {
 }
 const rating = getTotalRating()
 
-const submitForm = async() => {
-
+const submitForm = async(credentials: any) => {
+  console.log(credentials)
 }
 </script>
 
@@ -169,36 +169,45 @@ const submitForm = async() => {
 <!--  GOOGLE REVIEW SECTION -->
 
 <!--  CONTACT SECTION -->
-  <div id="contact" >
+  <div id="contact">
     <TextTitle title="Contact" />
 
-    <form @submit.prevent="submitForm" class="max-w-md mx-auto">
-      <div class="mb-4">
-        <label for="name" class="block text-sm font-medium">Name</label>
-        <input type="text" id="name" name="name" required
-               class="mt-1 p-2 border rounded-md w-full">
-      </div>
+    <div class="flex flex-col items-center">
+      <FormKit type="form" @submit="submitForm" submit-label="Send">
+        <FormKit type="text"
+                 name="name"
+                 label="Name"
+                 placeholder="Your name"
+                 validation="required"
+                 validation-visibility="live"
+        />
 
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium">Email</label>
-        <input type="email" id="email" name="email" required
-               class="mt-1 p-2 border rounded-md w-full">
-      </div>
+        <FormKit
+            type="email"
+            name="email"
+            label="Email"
+            placeholder="your@gmail.com"
+            validation="email|required"
+            validation-visibility="live"
+        />
 
-      <div class="mb-4">
-        <label for="subject" class="block text-sm font-medium">Subject</label>
-        <input type="text" id="subject" name="subject" required
-               class="mt-1 p-2 border rounded-md w-full">
-      </div>
+        <FormKit type="text"
+                 name="subject"
+                 label="Subject"
+                 placeholder="Contact"
+                 validation="required"
+                 validation-visibility="live"
+        />
 
-      <div class="mb-4">
-        <label for="message" class="block text-sm font-medium">Message</label>
-        <textarea id="message" name="message" rows="4" required
-                  class="mt-1 p-2 border rounded-md w-full"></textarea>
-      </div>
-
-      <button type="submit" class="bg-neutral-700 text-white p-2 rounded-md hover:bg-neutral-600">Send Message</button>
-    </form>
+        <FormKit type="textarea"
+                 name="text"
+                 label="Text"
+                 placeholder="Lorem ipsum..."
+                 validation="required"
+                 validation-visibility="live"
+        />
+      </FormKit>
+    </div>
   </div>
 <!--  CONTACT SECTION -->
 

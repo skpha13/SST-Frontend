@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
+    "@formkit/vue": "^1.5.9",
     "@headlessui/vue": "^1.7.19",
     "@heroicons/vue": "^2.1.1",
     "flowbite": "^2.3.0",
