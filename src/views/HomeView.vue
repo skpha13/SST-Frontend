@@ -25,6 +25,10 @@ const getTotalRating = () => {
   return (sum / count).toFixed(2)
 }
 const rating = getTotalRating()
+
+const submitForm = async() => {
+
+}
 </script>
 
 <template>
@@ -167,9 +171,42 @@ const rating = getTotalRating()
 <!--  CONTACT SECTION -->
   <div id="contact" >
     <TextTitle title="Contact" />
+
+    <form @submit.prevent="submitForm" class="max-w-md mx-auto">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium">Name</label>
+        <input type="text" id="name" name="name" required
+               class="mt-1 p-2 border rounded-md w-full">
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium">Email</label>
+        <input type="email" id="email" name="email" required
+               class="mt-1 p-2 border rounded-md w-full">
+      </div>
+
+      <div class="mb-4">
+        <label for="subject" class="block text-sm font-medium">Subject</label>
+        <input type="text" id="subject" name="subject" required
+               class="mt-1 p-2 border rounded-md w-full">
+      </div>
+
+      <div class="mb-4">
+        <label for="message" class="block text-sm font-medium">Message</label>
+        <textarea id="message" name="message" rows="4" required
+                  class="mt-1 p-2 border rounded-md w-full"></textarea>
+      </div>
+
+      <button type="submit" class="bg-neutral-700 text-white p-2 rounded-md hover:bg-neutral-600">Send Message</button>
+    </form>
   </div>
 <!--  CONTACT SECTION -->
 
+<!--  EMPTY DIV TO COMPLETE SPACE -->
+<!--  Empty div to allocate space for the footer section, otherwise the elements
+        above would be hidden -->
+  <div class="h-[96px]"></div>
+<!--  EMPTY DIV TO COMPLETE SPACE -->
 </template>
 
 <style scoped>
@@ -190,4 +227,18 @@ const rating = getTotalRating()
     display: none;
   }
 }
+
+input,
+textarea {
+  background-color: var(--tw-bg-opacity);
+}
+
+input:focus,
+textarea:focus {
+  border-color: white;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
 </style>
