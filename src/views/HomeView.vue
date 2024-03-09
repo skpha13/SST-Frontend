@@ -2,9 +2,11 @@
 import text from "../JSON Customization/text.json"
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-import {ref} from "vue";
+import carouselImages from "@/JSON Customization/carousel-images.json"
+import CarouselImage from "@/components/CarouselImage.vue";
 
-const mobileView = ref<boolean>(false);
+const imgArray = carouselImages
+console.log(imgArray)
 </script>
 
 <template>
@@ -15,8 +17,8 @@ const mobileView = ref<boolean>(false);
       </h1>
 
       <nav id="desktop-menu" class="space-x-4">
-        <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">Carousel</a>
-        <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">About</a>
+        <a href="#default-carousel" class="hover:bg-neutral-600 hover:rounded-lg p-2">Carousel</a>
+        <a href="#about" class="hover:bg-neutral-600 hover:rounded-lg p-2">About</a>
         <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">Gallery</a>
         <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">Google Reviews</a>
         <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">Custom</a>
@@ -57,9 +59,46 @@ const mobileView = ref<boolean>(false);
 
 <!--  Empty div to allocate space for the header section, otherwise the elements
       below would be hidden -->
-  <div class="mt-16"></div>
+  <div class="mt-8"></div>
 
-  <h1 class="">test</h1>
+  <div id="default-carousel" class="relative w-full mt-20" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+      <CarouselImage v-for="item in imgArray" :key="item.id" :path="item.path" />
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+      <button v-for="index in imgArray" type="button" class="w-3 h-3 rounded-full" aria-current="true" :aria-label="'Slide' + index" :data-carousel-slide-to="index"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+  </div>
+
+  <div id="about" class="mt-10">
+    <h1 class="text-2xl text-white text-center font-extrabold">About Us</h1>
+
+    <h1 class="text-xl font-bold text-white mb-2">Our Story</h1>
+    <p>{{ text["about-mission"] }}</p>
+
+    <h1 class="text-xl font-bold text-white mb-2 mt-4">Our Mission</h1>
+    <p>{{ text["about-story"] }}</p>
+  </div>
+
 </template>
 
 <style scoped>
