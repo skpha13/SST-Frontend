@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import text from "../JSON Customization/text.json"
+import galleryImages from "../JSON Customization/gallery.json"
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import carouselImages from "@/JSON Customization/carousel-images.json"
 import CarouselImage from "@/components/CarouselImage.vue";
+import TextTitle from "@/components/TextTitle.vue";
+import GalleryImage from "@/components/GalleryImage.vue";
 
 const imgArray = carouselImages
-console.log(imgArray)
+const imgGallery = galleryImages
+console.log(imgGallery)
 </script>
 
 <template>
+<!--  NAVBAR SECTION  -->
   <header class="fixed top-0 left-0 w-full bg-neutral-700 text-white p-4 z-50">
     <div class="container mx-auto flex items-center justify-between">
       <h1 class="text-xl font-bold">
@@ -19,9 +24,9 @@ console.log(imgArray)
       <nav id="desktop-menu" class="space-x-4">
         <a href="#default-carousel" class="hover:bg-neutral-600 hover:rounded-lg p-2">Carousel</a>
         <a href="#about" class="hover:bg-neutral-600 hover:rounded-lg p-2">About</a>
-        <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">Gallery</a>
-        <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">Google Reviews</a>
-        <a href="#" class="hover:bg-neutral-600 hover:rounded-lg p-2">Custom</a>
+        <a href="#gallery" class="hover:bg-neutral-600 hover:rounded-lg p-2">Gallery</a>
+        <a href="#google-review" class="hover:bg-neutral-600 hover:rounded-lg p-2">Google Reviews</a>
+        <a href="#contact" class="hover:bg-neutral-600 hover:rounded-lg p-2">Contact</a>
       </nav>
 
       <Menu id="mobile-menu" as="div" class="relative inline-block text-left">
@@ -36,19 +41,19 @@ console.log(imgArray)
           <MenuItems class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-neutral-500 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1">
               <MenuItem v-slot="{ active }">
-                <a href="#" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Carousel</a>
+                <a href="#default-carousel" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Carousel</a>
               </MenuItem>
               <MenuItem v-slot="{ active }">
-                <a href="#" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">About</a>
+                <a href="#about" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">About</a>
               </MenuItem>
               <MenuItem v-slot="{ active }">
-                <a href="#" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Gallery</a>
+                <a href="#gallery" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Gallery</a>
               </MenuItem>
               <MenuItem v-slot="{ active }">
-                <a href="#" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Google reviews</a>
+                <a href="#google-review" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Google reviews</a>
               </MenuItem>
               <MenuItem v-slot="{ active }">
-                <a href="#" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Custom</a>
+                <a href="#contact" :class="[active ? 'bg-neutral-600' : 'text-white', 'block px-4 py-2 text-sm']">Contact</a>
               </MenuItem>
             </div>
           </MenuItems>
@@ -56,12 +61,16 @@ console.log(imgArray)
       </Menu>
     </div>
   </header>
+<!--  NAVBAR SECTION  -->
 
-<!--  Empty div to allocate space for the header section, otherwise the elements
-      below would be hidden -->
-  <div class="mt-8"></div>
+<!--  EMPTY DIV TO COMPLETE SPACE -->
+      <!--  Empty div to allocate space for the header section, otherwise the elements
+            below would be hidden -->
+  <div id="space" class="mt-8"></div>
+<!--  EMPTY DIV TO COMPLETE SPACE -->
 
-  <div id="default-carousel" class="relative w-full mt-20" data-carousel="slide">
+<!--  CAROUSEL SECTION -->
+  <div id="default-carousel" class="relative w-full mt-28 " data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
       <CarouselImage v-for="item in imgArray" :key="item.id" :path="item.path" />
@@ -88,16 +97,54 @@ console.log(imgArray)
         </span>
     </button>
   </div>
+<!--  CAROUSEL SECTION -->
 
+<!--  ABOUT SECTION -->
   <div id="about" class="mt-10">
-    <h1 class="text-2xl text-white text-center font-extrabold">About Us</h1>
+    <TextTitle title="About Us" />
 
-    <h1 class="text-xl font-bold text-white mb-2">Our Story</h1>
-    <p>{{ text["about-mission"] }}</p>
+    <div class="flex flex-col md:flex-row justify-between">
+      <div class="bg-neutral-800 p-8 rounded-lg mb-4 md:mr-4">
+        <h1 class="text-xl font-bold text-white mb-2">Our Story</h1>
+        <p>{{ text["about-mission"] }}</p>
+      </div>
 
-    <h1 class="text-xl font-bold text-white mb-2 mt-4">Our Mission</h1>
-    <p>{{ text["about-story"] }}</p>
+      <div class="bg-neutral-800 p-8 rounded-lg mb-4">
+        <h1 class="text-xl font-bold text-white mb-2 mt-4">Our Mission</h1>
+        <p>{{ text["about-story"] }}</p>
+      </div>
+    </div>
   </div>
+<!--  ABOUT SECTION -->
+
+<!--  GALLERY SECTION -->
+  <div id="gallery">
+    <TextTitle title="Gallery" />
+
+    <div class="grid gap-4">
+      <GalleryImage :path="imgGallery.img01.path"
+                    class="h-auto max-w-full rounded-lg" />
+      <div class="grid grid-cols-5 gap-4">
+        <GalleryImage v-for="item in imgGallery" :key="item.id" :path="item.path"
+                      class="h-auto max-w-full rounded-lg"/>
+      </div>
+    </div>
+
+
+  </div>
+<!--  GALLERY SECTION -->
+
+<!--  GOOGLE REVIEW SECTION -->
+  <div id="google-review">
+    <TextTitle title="Google Reviews" />
+  </div>
+<!--  GOOGLE REVIEW SECTION -->
+
+<!--  CONTACT SECTION -->
+  <div id="contact">
+    <TextTitle title="Contact" />
+  </div>
+<!--  CONTACT SECTION -->
 
 </template>
 
