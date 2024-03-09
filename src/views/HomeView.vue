@@ -7,10 +7,24 @@ import carouselImages from "@/JSON Customization/carousel-images.json"
 import CarouselImage from "@/components/CarouselImage.vue";
 import TextTitle from "@/components/TextTitle.vue";
 import GalleryImage from "@/components/GalleryImage.vue";
+import reviewsJSON from "@/JSON Customization/reviews.json"
+import Review from "@/components/Review.vue";
 
 const imgArray = carouselImages
 const imgGallery = galleryImages
-console.log(imgGallery)
+const reviews = reviewsJSON
+
+const getTotalRating = () => {
+  let sum = 0
+  let count = 0;
+  for (let item in reviews) {
+    sum += parseFloat(reviews[item]['rating'])
+    count += 1
+  }
+
+  return (sum / count).toFixed(2)
+}
+const rating = getTotalRating()
 </script>
 
 <template>
@@ -110,7 +124,7 @@ console.log(imgGallery)
       </div>
 
       <div class="bg-neutral-800 p-8 rounded-lg mb-4">
-        <h1 class="text-xl font-bold text-white mb-2 mt-4">Our Mission</h1>
+        <h1 class="text-xl font-bold text-white mb-2">Our Mission</h1>
         <p>{{ text["about-story"] }}</p>
       </div>
     </div>
@@ -135,13 +149,23 @@ console.log(imgGallery)
 <!--  GALLERY SECTION -->
 
 <!--  GOOGLE REVIEW SECTION -->
+<!--  DIDN'T USE THE GOOGLE API BECAUSE IT REQUESTED CREDIT CARD INFORMATION -->
   <div id="google-review">
-    <TextTitle title="Google Reviews" />
+    <TextTitle title="Google Reviews"/>
+    <h1 class="text-center mb-6 text-xl"> Average rating: {{ rating }}</h1>
+    <div class="flex flex-row justify-start flex-wrap">
+      <Review v-for="(item, index) in reviews"
+              :key="index" :profile-photo="item['profile-photo']"
+              :rating="item['rating']"
+              :comment="item['comment']"
+              :username="item['username']"
+              class="mb-8 mx-2 max-w-96"/>
+    </div>
   </div>
 <!--  GOOGLE REVIEW SECTION -->
 
 <!--  CONTACT SECTION -->
-  <div id="contact">
+  <div id="contact" >
     <TextTitle title="Contact" />
   </div>
 <!--  CONTACT SECTION -->

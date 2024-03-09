@@ -1,0 +1,30 @@
+{
+  "review01": {
+    "id": 0,
+    "username": "Michael",
+    "comment": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+    "rating": 4.3,
+    "profile-photo": "src/assets/profile-images/profile01.jpeg"
+  },
+  "review02": {
+    "id": 1,
+    "username": "Maria",
+    "comment": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni",
+    "rating": 4,
+    "profile-photo": "src/assets/profile-images/profile02.jpeg"
+  },
+  "review03": {
+    "id": 2,
+    "username": "Mathew",
+    "comment": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "rating": 4.7,
+    "profile-photo": "src/assets/profile-images/profile03.jpeg"
+  },
+  "review04": {
+    "id": 3,
+    "username": "Mathew",
+    "comment": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "rating": 4.7,
+    "profile-photo": "src/assets/profile-images/profile03.jpeg"
+  }
+}
