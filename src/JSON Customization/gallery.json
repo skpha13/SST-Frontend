@@ -1,22 +1,22 @@
 {
   "img01": {
     "id": 0,
-    "path": "src/assets/gallery/img01.jpeg"
+    "path": "/gallery/img01.jpeg"
   },
   "img02": {
     "id": 1,
-    "path": "src/assets/gallery/img02.jpeg"
+    "path": "/gallery/img02.jpeg"
   },
   "img03": {
     "id": 2,
-    "path": "src/assets/gallery/img03.jpeg"
+    "path": "/gallery/img03.jpeg"
   },
   "img04": {
     "id": 3,
-    "path": "src/assets/gallery/img04.jpeg"
+    "path": "/gallery/img04.jpeg"
   },
   "img05": {
     "id": 4,
-    "path": "src/assets/gallery/img05.jpeg"
+    "path": "/gallery/img05.jpeg"
   }
 }

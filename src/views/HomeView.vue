@@ -194,7 +194,6 @@ const submitForm = async(credentials: any) => {
                  label="Name"
                  placeholder="Your name"
                  validation="required"
-                 validation-visibility="live"
         />
 
         <FormKit
@@ -203,7 +202,6 @@ const submitForm = async(credentials: any) => {
             label="Email"
             placeholder="your@gmail.com"
             validation="email|required"
-            validation-visibility="live"
         />
 
         <FormKit type="text"
@@ -211,15 +209,13 @@ const submitForm = async(credentials: any) => {
                  label="Subject"
                  placeholder="Contact"
                  validation="required"
-                 validation-visibility="live"
         />
 
         <FormKit type="textarea"
                  name="text"
                  label="Text"
                  placeholder="Lorem ipsum..."
-                 validation="required"
-                 validation-visibility="live"
+                 validation="length:5"
         />
       </FormKit>
     </div>
